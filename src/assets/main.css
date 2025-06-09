@@ -1,0 +1,9 @@
+@import './base.css';
+
+#app {
+  background-color: var(--application-background-color);
+}
+
+* {
+  box-sizing: border-box;
+}
