@@ -1,9 +1,9 @@
 <script setup>
 import TaskCard from './TaskCard.vue';
 import TaskModal from './TaskModal.vue';
-import { useTasksStore, useModalStore } from '../stores/store.js';
+import { useTasksStore, useAddModalStore } from '../stores/store.js';
 
-const modalStore = useModalStore();
+const addModalStore = useAddModalStore();
 
 const props = defineProps({
   type: String,
@@ -13,13 +13,13 @@ const props = defineProps({
 const store = useTasksStore();
 const tasks = store.tasks[props.type];
 
-const handleClick = () => {
-  modalStore.isModalVisible = true;
+const handleOpenModal = () => {
+  addModalStore.isModalVisible = true;
 };
 </script>
 
 <template>
-  <Teleport to="body"><TaskModal v-if="modalStore.isModalVisible" /></Teleport>
+  <Teleport to="body"><TaskModal v-if="addModalStore.isModalVisible" /></Teleport>
   <div class="container">
     <div class="header">
       <h1 class="label">{{ label }}</h1>
@@ -28,12 +28,18 @@ const handleClick = () => {
         class="add"
         src="/add.svg"
         alt="Иконка кнопки добавить новую задачу"
-        @click="handleClick"
+        @click="handleOpenModal"
       />
     </div>
 
     <div class="column">
-      <TaskCard v-for="task in tasks" :text="task.text" :id="String(task.id)" :key="task.id" />
+      <TaskCard
+        v-for="task in tasks"
+        :type="type"
+        :text="task.text"
+        :id="String(task.id)"
+        :key="task.id"
+      />
     </div>
   </div>
 </template>
@@ -53,6 +59,7 @@ const handleClick = () => {
   width: 100%;
 
   padding: 0 18px 0 18px;
+  margin-bottom: 32px;
 }
 
 .label {
@@ -67,7 +74,11 @@ const handleClick = () => {
 
 .column {
   width: 300px;
-  height: 100%;
+  height: 100vh;
+  max-height: 100vh;
+
+  overflow: scroll;
+  overscroll-behavior: contain;
 
   padding: 18px 18px;
 
@@ -76,7 +87,7 @@ const handleClick = () => {
   align-items: center;
   justify-content: start;
 
-  gap: 16px;
+  gap: 18px;
 
   border-radius: 18px;
 

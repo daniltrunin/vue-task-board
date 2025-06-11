@@ -1,16 +1,38 @@
 <script setup>
 import { ref } from 'vue';
+import { useAddModalStore, useTasksStore } from '@/stores/store';
 
 const input = ref('');
+const addModalStore = useAddModalStore();
+const tasksStore = useTasksStore();
+
+const handleClose = () => {
+  addModalStore.isModalVisible = false;
+};
+
+const handleAdd = () => {
+  const value = input.value;
+
+  if (value) {
+    addModalStore.isModalVisible = false;
+    tasksStore.addTask(value, 'toDo');
+  }
+
+  if (!value) return;
+
+  // console.log('text: ', value);
+  // console.log('length: ', value.length);
+};
 </script>
 
 <template>
   <div class="modal">
     <div class="window">
+      <h1 class="heading">Добавьте новую таску</h1>
       <input v-model="input" type="text" />
       <div class="buttons">
-        <button class="remove">Убрать</button>
-        <button class="add">Добавить</button>
+        <button @click="handleClose" class="close">Закрыть</button>
+        <button @click="handleAdd" class="add">Добавить</button>
       </div>
     </div>
   </div>
@@ -34,8 +56,8 @@ const input = ref('');
 .window {
   background-color: var(--modal-background-window-color);
 
-  width: 400px;
-  height: 150px;
+  width: auto;
+  height: auto;
 
   border-radius: 18px;
 
@@ -43,9 +65,9 @@ const input = ref('');
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 18px;
 
-  padding: 0 36px;
+  padding: 24px 36px;
 }
 
 input {
@@ -53,7 +75,7 @@ input {
   border-radius: 6px;
 
   width: 100%;
-  height: 34px;
+  height: auto;
 
   padding: 10px;
 
@@ -72,11 +94,17 @@ input:focus {
   outline: none;
 }
 
-.buttons {
-  align-self: flex-end;
+.heading {
+  font-size: 24px;
 
+  height: 32px;
+}
+
+.buttons {
   display: flex;
   gap: 8px;
+
+  width: 100%;
 }
 
 button {
@@ -93,10 +121,10 @@ button {
 
   cursor: pointer;
 
-  width: 80px;
+  width: 100%;
 }
 
-.remove {
-  background-color: rgb(237, 77, 77);
+.close {
+  background-color: var(--close-button-color);
 }
 </style>

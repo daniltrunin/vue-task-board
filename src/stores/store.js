@@ -28,10 +28,18 @@ export const useTasksStore = defineStore('tasks', () => {
     });
   }
 
-  return { tasks, getTasks, addTask }
+  function moveTask() { }
+
+  return { tasks, getTasks, addTask, moveTask }
 })
 
-export const useModalStore = defineStore('modal', () => {
+export const useAddModalStore = defineStore('modal', () => {
   const isModalVisible = ref(false)
   return { isModalVisible }
+})
+
+export const useMoveModalStore = defineStore('moveModal', () => {
+  const isMoveModalVisible = ref(false)
+  const currentType = ref(null)
+  return { isMoveModalVisible, currentType }
 })

@@ -1,9 +1,14 @@
 :root {
   --application-background-color: #ffffff;
   --column-background-color: #f6f6f6;
+
   --card-background-color: #e0e4ea;
+  --card-background-color-hover: #dadee3;
 
   --secondary-color: #67cb65;
+  --secondary-color-hover: #67cb65c8;
+
+  --close-button-color: rgb(237, 77, 77);
 
   --modal-background-color: #00000045;
   --modal-background-window-color: #e0e4ea;

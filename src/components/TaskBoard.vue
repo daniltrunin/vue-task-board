@@ -19,7 +19,10 @@ const types = [
   display: flex;
   justify-content: center;
 
-  min-height: 70vh;
+  min-height: 100vh;
+  max-height: 100vh;
+
+  padding: 28px 0 28px 0;
 
   column-gap: 64px;
   row-gap: 24px;
