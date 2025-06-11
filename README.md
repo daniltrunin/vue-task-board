@@ -1,29 +1,46 @@
-# vue-task-board
+<h1 align="center">
+  Vue 3 Task Board
+</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+<h4 align="center">Task board based on <a href="https://vuejs.org/" target="_blank">Vue</a></h4>
+<h4 align="center">Created by frontend developer from Orenburg, Russia — <a href="https://github.com/daniltrunin" target="_blank">Daniil</a></h4>
 
-## Recommended IDE Setup
+> [!IMPORTANT]
+> Simple application with a few functionalities: track the created tasks, create new ones, move them across the board
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+<p align="center">
+    <a href="https://t.me/shoutoutbelgium">
+    <img src="https://img.shields.io/badge/Telegram-7ec8e3">
+    </a>
+    <a href="https://github.com/daniltrunin">
+    <img src="https://img.shields.io/badge/GitHub-868b8e">
+    </a>
+</p>
 
-## Customize configuration
+<p align="center">
+  <a href="#techologies">Techologies</a> •
+</p>
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+![screenshot](./public/presentation.gif)
 
-## Project Setup
+> [!IMPORTANT]
+> Application still developing. There is a features currently are not added, but they will be.
 
-```sh
-npm install
-```
+## Techologies
 
-### Compile and Hot-Reload for Development
+<p align="left">
+    <a href="https://vuejs.org/">
+        — Vue 3
+    </a>
+</p>
 
-```sh
-npm run dev
-```
+## You may also like...
 
-### Compile and Minify for Production
+- [Popcorn Server](https://github.com/daniltrunin/popcorn-Express.JS-server) - Popcorn Express.JS Server
+- [Chatify](https://github.com/daniltrunin/chatify-client) - Real Time Chat Based App
+- [Habbit](https://github.com/amitmerchant1990/correo) - Task, Habbits Tracker App
 
-```sh
-npm run build
-```
+---
+
+> GitHub [@daniltrunin](https://github.com/daniltrunin) &nbsp;&middot;&nbsp;
+> Telegram [@shoutoutbelgium](https://t.me/shoutoutbelgium)
