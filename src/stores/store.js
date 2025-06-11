@@ -1,18 +1,19 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+/* Store с задачами */
 export const useTasksStore = defineStore('tasks', () => {
 
   const tasks = ref({
     toDo: [
-      { id: 1, text: 'First Task', status: 'toDo' },
-      { id: 5, text: 'Fifth Task', status: 'toDo' }
+      { id: 1, text: 'Убраться', status: 'toDo' },
+      { id: 2, text: 'Вынести мусор', status: 'toDo' }
     ],
     inProgress: [
-      { id: 2, text: 'Second Task', status: 'inProgress' }
+      { id: 3, text: 'Закончить рабочую задачу', status: 'inProgress' }
     ],
     done: [
-      { id: 3, text: 'Third Task', status: 'done' }
+      { id: 4, text: 'Утренний уход', status: 'done' }
     ],
   })
 
@@ -28,18 +29,33 @@ export const useTasksStore = defineStore('tasks', () => {
     });
   }
 
-  function moveTask() { }
+  function moveTask(target, id, type) {
+    const taskIndex = tasks.value[type].findIndex(task => task.id === Number(id));
+
+    const task = tasks.value[type][taskIndex];
+    if (!task) {
+      console.warn('Задача не найдена по индексу');
+      return;
+    }
+
+    tasks.value[type].splice(taskIndex, 1);
+    task.status = target;
+    tasks.value[target].push(task);
+  }
 
   return { tasks, getTasks, addTask, moveTask }
 })
 
+/* Store по добавлению задачи */
 export const useAddModalStore = defineStore('modal', () => {
   const isModalVisible = ref(false)
   return { isModalVisible }
 })
 
+/* Store по передвижению задачи */
 export const useMoveModalStore = defineStore('moveModal', () => {
   const isMoveModalVisible = ref(false)
   const currentType = ref(null)
-  return { isMoveModalVisible, currentType }
+  const currentId = ref(null);
+  return { isMoveModalVisible, currentType, currentId }
 })

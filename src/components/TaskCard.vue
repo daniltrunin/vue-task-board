@@ -22,8 +22,8 @@ const targets = computed(() => {
 });
 
 const handleOpenModal = (id, type) => {
-  console.log('Открыли модалку для таски с id:', id, 'с типом: ', type);
   moveModalStore.currentType = type;
+  moveModalStore.currentId = id;
   moveModalStore.isMoveModalVisible = true;
 };
 
@@ -31,7 +31,20 @@ const handleCloseModal = () => {
   moveModalStore.isMoveModalVisible = false;
 };
 
-const handleMoveTask = () => {};
+const handleMoveTask = (target) => {
+  const id = moveModalStore.currentId;
+  const type = moveModalStore.currentType;
+
+  if (target === 'Выполнить') {
+    tasksStore.moveTask('toDo', id, type);
+  } else if (target === 'В процессе') {
+    tasksStore.moveTask('inProgress', id, type);
+  } else if (target === 'Выполнено') {
+    tasksStore.moveTask('done', id, type);
+  }
+
+  moveModalStore.isMoveModalVisible = false;
+};
 </script>
 
 <template>
@@ -41,7 +54,12 @@ const handleMoveTask = () => {};
         <h1 class="heading">Куда перенести таску?</h1>
 
         <div v-if="targets.length" class="column-fields">
-          <div v-for="target in targets" :key="target" class="column-field" @click="handleMoveTask">
+          <div
+            v-for="target in targets"
+            :key="target"
+            class="column-field"
+            @click="() => handleMoveTask(target)"
+          >
             {{ target }}
           </div>
         </div>

@@ -74,13 +74,13 @@ const handleOpenModal = () => {
 
 .column {
   width: 300px;
-  height: 100vh;
+  height: auto;
   max-height: 100vh;
 
   overflow: scroll;
   overscroll-behavior: contain;
 
-  padding: 18px 18px;
+  padding: 18px 18px 18px 18px;
 
   display: flex;
   flex-direction: column;
