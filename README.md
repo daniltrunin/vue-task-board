@@ -17,10 +17,6 @@
     </a>
 </p>
 
-<p align="center">
-  <a href="#techologies">Techologies</a> •
-</p>
-
 ![screenshot](./public/presentation.gif)
 
 ## You may also like...
