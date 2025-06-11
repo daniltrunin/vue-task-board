@@ -23,17 +23,6 @@
 
 ![screenshot](./public/presentation.gif)
 
-> [!IMPORTANT]
-> Application still developing. There is a features currently are not added, but they will be.
-
-## Techologies
-
-<p align="left">
-    <a href="https://vuejs.org/">
-        — Vue 3
-    </a>
-</p>
-
 ## You may also like...
 
 - [Popcorn Server](https://github.com/daniltrunin/popcorn-Express.JS-server) - Popcorn Express.JS Server
